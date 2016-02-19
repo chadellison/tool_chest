@@ -1,4 +1,6 @@
+<div class="tool_info">
 <h3><%= @tool.name %> - <%= @tool.quantity %></h3>
 <%= @tool.formatted_price%>
 <%= link_to "Destroy #{@tool.name}", tool_path(@tool.id), method: "destroy" %>
 <%= link_to "Edid #{@tool.name}", edit_tool_path(@tool.id) %>
+</div>

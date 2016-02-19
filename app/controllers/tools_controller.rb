@@ -11,6 +11,15 @@ class ToolsController < ApplicationController
     @tool = Tool.new
   end
 
+  def create
+    @tool = Tool.new(tool_params)
+    if @tool.save
+      redirect_to tool_path(@tool.id)
+    else
+      render :new
+    end
+  end
+
   def edit
     @tool = Tool.find(params[:id])
   end
@@ -18,18 +27,9 @@ class ToolsController < ApplicationController
   def update
     @tool = Tool.find(params[:id])
     if @tool.update(tool_params)
-      redirect_to tool_path(@tool.id)
+      redirect_to @tool
     else
       render :edit
-    end
-  end
-
-  def create
-    @tool = Tool.new(tool_params)
-    if @tool.save
-      redirect_to tool_path(@tool.id)
-    else
-      render :new
     end
   end
 
