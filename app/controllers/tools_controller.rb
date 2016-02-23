@@ -15,6 +15,7 @@ class ToolsController < ApplicationController
     @tool = Tool.new(tool_params)
     if @tool.save
       flash[:alert] = "Registered #{@tool.name}!"
+      session[:most_recent_tool] = @tool.id
       redirect_to tool_path(@tool.id)
     else
       flash[:error] = "Registration failed"
