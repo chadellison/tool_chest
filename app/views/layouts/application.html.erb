@@ -10,8 +10,16 @@
 
 <%= yield %>
 <p>
-  <strong>Newest tool:</strong> <%= most_recent_tool.name %>
+  <strong>Newest tool:</strong> <%= most_recent_tool %>
 </p>
-
+<p>
+<strong>Tools added this session:</strong> <%= current_tool_count %>
+</p>
+<p>
+<strong>Potential Revenue:</strong> <%= current_potential_revenue %>
+</p>
+<p>
+  <strong>Current Sessions Tool Summary:</strong> <%= current_tool_summary %>
+</p>
 </body>
 </html>

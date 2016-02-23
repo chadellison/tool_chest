@@ -15,7 +15,10 @@ class ToolsController < ApplicationController
     @tool = Tool.new(tool_params)
     if @tool.save
       flash[:alert] = "Registered #{@tool.name}!"
-      session[:most_recent_tool] = @tool.id
+      session[:most_recent_tool] = @tool.id 
+      session[:current_tool_count] = session[:current_tool_count].to_i + 1
+      session[:current_potential_revenue] ||= 0
+      session[:current_potential_revenue] += (@tool.price * @tool.quantity)
       redirect_to tool_path(@tool.id)
     else
       flash[:error] = "Registration failed"
