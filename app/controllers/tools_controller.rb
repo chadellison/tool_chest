@@ -14,8 +14,10 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     if @tool.save
+      flash[:alert] = "Registered #{@tool.name}!"
       redirect_to tool_path(@tool.id)
     else
+      flash[:error] = "Registration failed"
       render :new
     end
   end

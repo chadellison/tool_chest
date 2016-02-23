@@ -1,5 +1,6 @@
 <div class="tool_info">
 <h3><%= @tool.name %> - <%= @tool.quantity %></h3>
+<h3><%= flash[:alert] %></h3>
 <%= @tool.formatted_price%>
 <%= link_to "Destroy #{@tool.name}", tool_path(@tool.id), method: "destroy" %>
 <%= link_to "Edit #{@tool.name}", edit_tool_path(@tool.id) %>
