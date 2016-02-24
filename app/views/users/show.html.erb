@@ -1,6 +1,6 @@
-<h1><%= "Welcome, #{@user.username}" %></h1>
+<h1><%= "Welcome, #{current_user.username}" %></h1>
 <h2>All Tools</h2>
-<div class="tool_info"><% @user.tools.each do |tool| %>
+<div class="tool_info"><% current_user.tools.each do |tool| %>
 <h4><%= tool.name %> </h4>
 <p>Price: <%= tool.price %> Quantity: <%= tool.quantity %> </p>
 <% end %></div>

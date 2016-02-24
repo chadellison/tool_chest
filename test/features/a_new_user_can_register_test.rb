@@ -13,7 +13,8 @@ class ANewUserCanRegisterTest < ActionDispatch::IntegrationTest
 
     jones = User.last
 
-    assert page.has_content? "Welcome, #{jones.username}"
-    assert_equal "/users/#{jones.id}", current_path
+    assert page.has_content? "Login"
+    assert page.has_content? "Registration Successful!"
+    assert_equal root_path, current_path
   end
 end
