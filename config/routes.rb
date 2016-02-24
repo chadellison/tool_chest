@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tools, only: [:new, :create, :show, :edit, :update]
   resources :users, only: [:index, :new, :create, :show] do
     resources :tools
   end

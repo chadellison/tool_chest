@@ -19,13 +19,13 @@ class UserCanViewAllTheirToolsTest < ActionDispatch::IntegrationTest
     assert_equal "/users/#{user.id}", current_path
 
     click_on "Add Tool"
-    assert_equal new_user_tool_path, current_path
+    assert_equal new_user_tool_path(user.id), current_path
     fill_in "Name", with: "jack hammer"
     fill_in "Quantity", with: 50
     fill_in "Price", with: 20000
     click_on "Create Tool"
     assert page.has_content?("jack hammer")
-    assert_equal "users/#{user.id}", current_path
+    assert_equal user_path(user), current_path
   end
 
 end

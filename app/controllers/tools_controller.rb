@@ -20,7 +20,8 @@ class ToolsController < ApplicationController
       session[:current_tool_count] = session[:current_tool_count].to_i + 1
       session[:current_potential_revenue] ||= 0
       session[:current_potential_revenue] += (@tool.price * @tool.quantity)
-      redirect_to tool_path(@tool.id)
+      current_user.tools << @tool
+      redirect_to current_user
     else
       flash[:error] = "Registration failed"
       render :new
@@ -28,13 +29,13 @@ class ToolsController < ApplicationController
   end
 
   def edit
-    @tool = Tool.find(params[:id])
+    @tool = Tool.find_by(user_id: current_user.id)
   end
 
   def update
     @tool = Tool.find(params[:id])
     if @tool.update(tool_params)
-      redirect_to @tool
+      redirect_to current_user
     else
       render :edit
     end

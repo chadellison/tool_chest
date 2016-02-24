@@ -1,3 +1,11 @@
-<div><%= render "form" %></div>
-<p><%= link_to "Back to Tools", tools_path %></p>
+<%= form_for([@user, @tool]) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  <%= f.submit %>
+<% end %>
+<p><%= link_to "Back to Home", root_path %></p>
 <div><h3><%= flash[:error] %></h3></div>
