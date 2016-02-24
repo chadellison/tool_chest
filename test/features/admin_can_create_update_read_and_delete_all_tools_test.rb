@@ -20,7 +20,6 @@ class AdminCanCreateUpdateReadDeleteAllToolsTest < ActionDispatch::IntegrationTe
   end
 
   test "user cannot see all tools" do
-    skip
     user = User.create(username: "Chad", password: "password", role: 0)
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 

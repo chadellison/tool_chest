@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :most_recent_tool, :current_tool_count, :current_potential_revenue, :current_tool_summary
+  helper_method :current_user, :most_recent_tool, :current_tool_count, :current_potential_revenue, :current_tool_summary, :current_admin
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -26,5 +26,9 @@ class ApplicationController < ActionController::Base
 
   def current_tool_summary
     "#{current_tool_count} tools with a potential revenue of #{current_potential_revenue}"
+  end
+
+  def current_admin?
+    current_user && current_user.admin?
   end
 end
