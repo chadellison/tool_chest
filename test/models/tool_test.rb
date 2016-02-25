@@ -9,4 +9,13 @@ class ToolTest < ActiveSupport::TestCase
     jones.tools << tool
     assert_equal jones.id, tool.user_id
   end
+
+  def test_a_tool_belongs_to_a_category
+    category = Category.create(title: "power tools")
+    tool = Tool.create(name: "electric drill")
+
+    assert_equal false, category.id == tool.user_id
+    category.tools << tool
+    assert_equal category.id, tool.category_id
+  end
 end
