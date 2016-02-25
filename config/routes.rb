@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     resources :tools, only: [:index]
   end
 
-  resources :categories, only: [:new, :create, :show]
+  resources :categories, only: [:new, :create, :show, :destroy]
 
   namespace :admin do
-    resources :categories, only: [:index, :new, :create, :show]
+    resources :categories, only: [:index, :new, :create]
   end
 
   resources :users, only: [:index, :new, :create, :show] do

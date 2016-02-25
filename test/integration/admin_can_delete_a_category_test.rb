@@ -9,7 +9,7 @@ class AdminCanDeleteACategoryTest < ActionDispatch::IntegrationTest
     visit admin_categories_path
 
     click_on "Saw"
-    assert_equal admin_category_path, current_path
+    assert_equal category_path(category.id), current_path
 
     click_on "Delete"
     assert_equal admin_categories_path, current_path

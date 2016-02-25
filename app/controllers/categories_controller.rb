@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     @categories = Category.all
   end
@@ -18,11 +17,15 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to admin_categories_path
+  end
+
   private
 
   def category_params
     params.require(:category).permit(:title)
   end
-
-
 end
