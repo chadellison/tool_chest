@@ -16,7 +16,6 @@ class ToolsController < ApplicationController
     if @tool.save
       flash[:alert] = "Registered #{@tool.name}!"
       session[:most_recent_tool] = @tool.id
-      # session[:most_recent_tool] = current_user.tools.last.id
       session[:current_tool_count] = session[:current_tool_count].to_i + 1
       session[:current_potential_revenue] ||= 0
       session[:current_potential_revenue] += (@tool.price * @tool.quantity)
@@ -29,7 +28,11 @@ class ToolsController < ApplicationController
   end
 
   def edit
-    @tool = Tool.find_by(user_id: current_user.id)
+    if current_user.admin?
+      @tool = Tool.find(params[:id])
+    else
+      @tool = Tool.find_by(user_id: current_user.id)
+    end
   end
 
   def update
