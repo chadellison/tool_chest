@@ -2,7 +2,7 @@
 <h3><%= @tool.name %> - <%= @tool.quantity %></h3>
 <h3><%= flash[:alert] %></h3>
 <%= @tool.formatted_price %>
-<%= link_to "Destroy #{@tool.name}", tool_path(@tool.id), method: "delete" %>
+<%= link_to "Delete #{@tool.name}", tool_path(@tool.id), method: "delete" %>
 <%= link_to "Edit #{@tool.name}", edit_tool_path(@tool.id) %>
 <p><%= link_to "Back to Tools", tools_path %></p>
 </div>

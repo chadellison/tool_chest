@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tools, only: [:new, :create, :show, :edit, :update]
+  resources :tools, only: [:new, :create, :show, :edit, :update, :destroy]
 
   namespace :admin do
     resources :tools, only: [:index, :show]
